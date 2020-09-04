@@ -23,7 +23,7 @@ function varargout = Neural_Ensemble_Analysis(varargin)
 
 % Edit the above text to modify the response to help Neural_Ensemble_Analysis
 
-% Last Modified by GUIDE v2.5 14-Feb-2020 12:43:13
+% Last Modified by GUIDE v2.5 04-Sep-2020 08:45:37
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -761,6 +761,9 @@ function btnGetFrequencies_Callback(hObject,~,handles)
     % Get frequencies
     %frequencies = Get_Normalized_Instant_Freq(raster,samples_per_second,'zscore');
     bin=200*samples_per_second/1000;step=20*samples_per_second/1000;
+    if step<1
+        step=1
+    end
     frequencies = Get_Zscore_From_Raster(raster,bin,step);
      
     set(handles.btnPlotFrequencies,'enable','on')
@@ -3139,4 +3142,3 @@ function btnSaveBySeconds_Callback(hObject,~,handles)
     % Color black
     set(hObject,'ForeGroundColor',[0 0 0])
 end
-
